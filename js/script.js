@@ -45,4 +45,62 @@ let LampRegion = function(){
 
 let lampRegion = new LampRegion();
 
-lampRegion.get();
+// lampRegion.get();
+
+
+//////////  Функция-конструктор по работе с DOM ///////////////////////////////////////////////////////////////////////
+
+let DOM = function(){
+
+    this.create = function(tagName){
+        return document.createElement(tagName);
+        
+    }
+
+    this.attr = function(element, name, value){
+        if(!element || !name) return false;
+        if(!value) return element.getAttribute(name);
+        else element.setAttribute(name, value);
+    }
+
+    this.html = function(element, value){
+        return element.innerHTML = value;
+    }
+
+    this.search = function(element, selektor){
+        if(!element) return document.querySelectorAll(selektor);
+        else element.querySelectorAll(selektor); 
+    }
+
+    this.addClass = function(element, className){
+        return element.classList.add(className);
+    }
+
+    this.removeClass = function(element, className){
+        return element.classList.remove(className);
+    }
+
+    this.toggleClass = function(element, className){
+        return element.classList.toggle(className);
+    }
+
+    this.hasClass = function(element, className){
+        return element.classList.contains(className);
+    }
+
+    this.append = function(element, newElement, beforeElement){
+        if(!element || !newElement) return false;
+        if(!beforeElement) return element.appendChild(newElement);
+        else element.insertBefore(newElement, beforeElement);
+    }
+
+    this.on = function(element, eventName, funcName){
+        element.addEventListener(eventName, funcName);
+        
+    }
+
+}
+
+let dom = new DOM();
+
+
